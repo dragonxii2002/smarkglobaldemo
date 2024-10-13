@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     //_pages.add(Center(child: Text('Welcome, ${widget.user.username}!')));
-    _pages.add(LandingPage());
+    _pages.add(LandingPage(user: widget.user));
     _pages.add(ProductListPage());
     _pages.add(ShoppingCartPage());
     _pages.add(UserDetailsPage(user: widget.user));
