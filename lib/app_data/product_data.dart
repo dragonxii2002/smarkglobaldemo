@@ -1,4 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+class Category {
+  final String tag;
+
+  const Category({required this.tag});
+}
+
+final List<Category> categories = [
+  const Category(
+    tag: '配件',
+  ),
+  const Category(
+    tag: '上衣',
+  ),
+  const Category(
+    tag: '鞋类',
+  ),
+  const Category(
+    tag: '裤子',
+  ),
+];
 
 class Product {
   final String name;
@@ -7,6 +29,7 @@ class Product {
   final String imageUrl;
   final String category;
   final double rating;
+  int quantity;
 
   Product({
     required this.name,
@@ -15,6 +38,7 @@ class Product {
     required this.imageUrl,
     required this.category,
     required this.rating,
+    this.quantity = 0,
   });
 }
 
@@ -26,6 +50,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/29473001_gray/29473001-0-700x700.jpg',
     category: '配件',
     rating: 5,
+    quantity: 0,
   ),
   Product(
     name: '登山背包1',
@@ -34,6 +59,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/29473001_gray/29473001-0-700x700.jpg',
     category: '配件',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '登山背包2',
@@ -42,6 +68,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/29473001_gray/29473001-0-700x700.jpg',
     category: '配件',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '登山背包3',
@@ -50,6 +77,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/29473001_gray/29473001-0-700x700.jpg',
     category: '配件',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '登山背包4',
@@ -58,6 +86,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/29473001_gray/29473001-0-700x700.jpg',
     category: '配件',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '登山背包5',
@@ -66,6 +95,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/29473001_gray/29473001-0-700x700.jpg',
     category: '配件',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '登山靴1',
@@ -74,6 +104,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42508001_36_yards/42508001_36_yards_h_5-700x700.jpg',
     category: '鞋类',
     rating: 2,
+    quantity: 0,
   ),
   Product(
     name: '登山靴2',
@@ -82,6 +113,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42508001_36_yards/42508001_36_yards_h_5-700x700.jpg',
     category: '鞋类',
     rating: 1,
+    quantity: 0,
   ),
   Product(
     name: '登山靴3',
@@ -90,6 +122,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42508001_36_yards/42508001_36_yards_h_5-700x700.jpg',
     category: '鞋类',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '登山靴4',
@@ -98,6 +131,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42508001_36_yards/42508001_36_yards_h_5-700x700.jpg',
     category: '鞋类',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '登山靴5',
@@ -106,6 +140,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42508001_36_yards/42508001_36_yards_h_5-700x700.jpg',
     category: '鞋类',
     rating: 5,
+    quantity: 0,
   ),
   Product(
     name: '睡袋1',
@@ -114,6 +149,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/MDY28256/MDY28256-5-700x700.jpg',
     category: '配件',
     rating: 1,
+    quantity: 0,
   ),
   Product(
     name: '睡袋2',
@@ -122,6 +158,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/MDY28256/MDY28256-5-700x700.jpg',
     category: '配件',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '睡袋3',
@@ -130,6 +167,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/MDY28256/MDY28256-5-700x700.jpg',
     category: '配件',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '睡袋4',
@@ -138,6 +176,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/MDY28256/MDY28256-5-700x700.jpg',
     category: '配件',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '睡袋5',
@@ -146,6 +185,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/MDY28256/MDY28256-5-700x700.jpg',
     category: '配件',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '睡袋6',
@@ -154,6 +194,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/MDY28256/MDY28256-5-700x700.jpg',
     category: '配件',
     rating: 2,
+    quantity: 0,
   ),
   Product(
     name: '防水雨衣1',
@@ -162,6 +203,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/37489001/37489001-700x700.jpg',
     category: '上衣',
     rating: 1,
+    quantity: 0,
   ),
   Product(
     name: '防水雨衣2',
@@ -170,6 +212,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/37489001/37489001-700x700.jpg',
     category: '上衣',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '防水雨衣3',
@@ -178,6 +221,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/37489001/37489001-700x700.jpg',
     category: '上衣',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '防水雨衣4',
@@ -186,6 +230,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/37489001/37489001-700x700.jpg',
     category: '上衣',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '防水雨衣5',
@@ -194,6 +239,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/37489001/37489001-700x700.jpg',
     category: '上衣',
     rating: 5,
+    quantity: 0,
   ),
   Product(
     name: '登山裤1',
@@ -202,6 +248,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42235001/42235001-700x700.jpg',
     category: '裤子',
     rating: 1,
+    quantity: 0,
   ),
   Product(
     name: '登山裤2',
@@ -210,6 +257,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42235001/42235001-700x700.jpg',
     category: '裤子',
     rating: 4,
+    quantity: 0,
   ),
   Product(
     name: '登山裤3',
@@ -218,6 +266,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42235001/42235001-700x700.jpg',
     category: '裤子',
     rating: 2,
+    quantity: 0,
   ),
   Product(
     name: '登山裤4',
@@ -226,6 +275,7 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42235001/42235001-700x700.jpg',
     category: '裤子',
     rating: 3,
+    quantity: 0,
   ),
   Product(
     name: '登山裤5',
@@ -234,5 +284,6 @@ final List<Product> products = [
     imageUrl: 'https://shop.outletexpress.com.hk/image/cache/catalog/42235001/42235001-700x700.jpg',
     category: '裤子',
     rating: 1,
+    quantity: 0,
   ),
 ];

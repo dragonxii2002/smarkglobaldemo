@@ -18,25 +18,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-  String _appBarTitle = 'Home';
+  int selectedIndex = 0;
+  String appBarTitle = 'Home';
 
-  final List<Widget> _pages = [];
+  final List<Widget> pages = [];
 
   @override
   void initState() {
     super.initState();
     //_pages.add(Center(child: Text('Welcome, ${widget.user.username}!')));
-    _pages.add(LandingPage(user: widget.user));
-    _pages.add(ProductListPage());
-    _pages.add(ShoppingCartPage());
-    _pages.add(UserDetailsPage(user: widget.user));
+    pages.add(LandingPage(user: widget.user));
+    pages.add(ProductListPage());
+    pages.add(ShoppingCartPage());
+    pages.add(UserDetailsPage(user: widget.user));
   }
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
-      _appBarTitle = _getAppBarTitle(index);
+      selectedIndex = index;
+      appBarTitle = _getAppBarTitle(index);
     });
   }
 
@@ -45,9 +45,9 @@ class _HomePageState extends State<HomePage> {
       case 0:
         return 'Home';
       case 1:
-        return 'Shopping Cart';
-      case 2:
         return 'Product List';
+      case 2:
+        return 'Shopping Cart';
       case 3:
         return 'User Details';
       default:
@@ -61,9 +61,9 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_appBarTitle), // 使用当前的标题
+        title: Text(appBarTitle), // 使用当前的标题
       ),
-      body: _pages[_selectedIndex],
+      body: pages[selectedIndex],
       // 根据索引显示相应页面
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
             label: 'User Details',
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: selectedIndex,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         backgroundColor: AppColors.primaryColor,

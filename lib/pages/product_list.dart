@@ -115,6 +115,18 @@ class _ProductListPageState extends State<ProductListPage> {
                           '评分: ${product.rating.toStringAsFixed(1)}', // 显示评分
                           style: TextStyle(color: Colors.orange),
                         ),
+                        SizedBox(height: 5),
+                        ElevatedButton(
+                          onPressed: () {
+                            // 增加产品数量
+                            setState(() {
+                              product.quantity++; // 每次点击增加数量
+                            });
+                            // 记录购买信息
+                            print("购买: ${product.name}, 价格: \$${product.price}, 数量: ${product.quantity}");
+                          },
+                          child: Text('购买'),
+                        ),
                       ],
                     ),
                   ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smarkglobaldemoapp/app_data/app_data.dart'; // 确保导入 UserData 和产品数据
-import 'package:smarkglobaldemoapp/app_data/product_data.dart'; // 确保导入产品数据
+import 'package:smarkglobaldemoapp/app_data/product_data.dart';
+
+import '../components/product_categories.dart';
+import '../components/top_rated_product_list.dart'; // 确保导入产品数据
 
 class LandingPage extends StatelessWidget {
   final UserData user;
@@ -43,150 +46,14 @@ class LandingPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 10), // 简介和列表之间的间隔
-            topRatedProducts.isEmpty
-                ? Center(child: Text('No top-rated products available.')) // 如果没有产品，显示消息
-                : Expanded( // 使用 Expanded 包裹 ListView 以适应剩余空间
-              child: ListView.builder(
-                itemCount: topRatedProducts.length,
-                itemBuilder: (context, index) {
-                  final product = topRatedProducts[index];
-                  return Card(
-                    margin: EdgeInsets.all(10),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Image.network(
-                            product.imageUrl,
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Container(
-                                width: 100,
-                                height: 100,
-                                color: Colors.grey[300], // 占位符背景色
-                                child: Icon(Icons.image, color: Colors.grey), // 占位符图标
-                              );
-                            },
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  product.name,
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 5),
-                                Text(product.description),
-                                SizedBox(height: 5),
-                                Text(
-                                  '分类: ${product.category}', // 显示产品分类
-                                  style: TextStyle(color: Colors.blueGrey),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  '\$${product.price.toStringAsFixed(2)}',
-                                  style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  '评分: ${product.rating.toStringAsFixed(1)}', // 显示评分
-                                  style: TextStyle(color: Colors.orange),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            TopRatedProductsList(topRatedProducts: topRatedProducts),
             SizedBox(height: 10), // 列表和按钮之间的间隔
             Text(
               'Product Categories',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold), // 类别标题样式
             ),
             SizedBox(height: 10), // 类别标题和按钮之间的间隔
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: categories.take(2).map((category) {
-                    return Column(
-                      children: [
-                        // 使用 Stack 来组合图标和文本
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Image.asset(
-                              categoryImages[category] ?? 'assets/images/default.png', // 替换为实际的图片路径
-                              width: 50,
-                              height: 50,
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.all(0), // 取消按钮内边距
-                                minimumSize: Size(60, 60), // 设置最小尺寸
-                              ),
-                              onPressed: () {
-                                // TODO: 添加按钮点击处理逻辑，例如导航到相应的类别页面
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(category),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ),
-                SizedBox(height: 10), // 行之间的间隔
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: categories.skip(2).take(2).map((category) {
-                    return Column(
-                      children: [
-                        // 使用 Stack 来组合图标和文本
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Image.asset(
-                              categoryImages[category] ?? 'assets/images/default.png', // 替换为实际的图片路径
-                              width: 50,
-                              height: 50,
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.all(0), // 取消按钮内边距
-                                minimumSize: Size(60, 60), // 设置最小尺寸
-                              ),
-                              onPressed: () {
-                                // TODO: 添加按钮点击处理逻辑，例如导航到相应的类别页面
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(category),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ),
-              ],
-            ),
+            ProductCategories(),
           ],
         ),
       ),
